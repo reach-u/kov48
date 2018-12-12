@@ -22,14 +22,16 @@ public class AuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String key = request.getParameter(Constants.API_KEY);
+        if (key == null) {
+            key = request.getHeader(Constants.API_KEY);
+        }
+
         if (key != null) {
             Authentication auth = new UsernamePasswordAuthenticationToken(new User(key), null,
                     Lists.newArrayList(new SimpleGrantedAuthority("ROLE_USER")));
             SecurityContextHolder.getContext().setAuthentication(auth);
         }
-        else {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
-        }
+
 
         filterChain.doFilter(request, response);
     }
