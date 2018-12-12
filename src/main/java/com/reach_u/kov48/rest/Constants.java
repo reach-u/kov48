@@ -8,4 +8,6 @@ public class Constants {
 
     public static final String API_URL = "api/1";
 
+    public static final String API_KEY = "apikey";
+
 }
