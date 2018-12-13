@@ -9,7 +9,7 @@ public interface ChildService {
 
     Collection<Child> findChildren(Person parent);
 
-    Child findChild(long idCode);
+    Child findChild(long idCode, Person parent);
 
     void confirmFather(Person father, long childIdCode);
 

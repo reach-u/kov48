@@ -30,8 +30,13 @@ public class ChildServiceImpl implements ChildService, InitializingBean {
     }
 
     @Override
-    public Child findChild(long idCode) {
-        return CHILDREN.get(idCode);
+    public Child findChild(long idCode, Person parent) {
+        Child child = CHILDREN.get(idCode);
+        if (child != null && !child.isParent(parent)) {
+            child = null;
+        }
+
+        return child;
     }
 
     @Override
