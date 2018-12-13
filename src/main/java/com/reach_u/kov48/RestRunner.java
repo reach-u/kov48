@@ -1,4 +1,4 @@
-package com.reach_u.kov48.rest;
+package com.reach_u.kov48;
 
 import com.reach_u.kov48.conf.Conf;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,5 +1,6 @@
 package com.reach_u.kov48.conf;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,8 +11,6 @@ import springfox.documentation.schema.ModelRef;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableSwagger2
@@ -27,7 +26,7 @@ public class SwaggerConf {
                 .paths(PathSelectors.any()).build()
                 .pathMapping(basePath)
                 .globalOperationParameters(
-                        Arrays.asList(new ParameterBuilder()
+                        Lists.newArrayList(new ParameterBuilder()
                                 .name("apikey")
                                 .description("Person ID code")
                                 .modelRef(new ModelRef("string"))
