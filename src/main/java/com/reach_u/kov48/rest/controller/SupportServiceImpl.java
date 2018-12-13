@@ -21,7 +21,7 @@ public class SupportServiceImpl implements SupportService {
     static {
         SUPPORT.add(new Support("Sünnitoetus (Riik)", 320, PAID, true));
         SUPPORT.add(new Support("Sünnitoetus (KOV)", 1000, PAID, true));
-        SUPPORT.add(new Support("Lepsetoetus (Riik)", 32, NOT_APPLIED, false));
+        SUPPORT.add(new Support("Lapsetoetus (Riik)", 32, NOT_APPLIED, false));
         SUPPORT.add(new Support("Vanemahüvitis (Riik)", 1500, NOT_APPLIED, false));
     }
 
