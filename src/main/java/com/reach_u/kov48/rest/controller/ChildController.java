@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping(Constants.API_URL + "child")
 @Secured("ROLE_USER")
@@ -29,18 +31,19 @@ public class ChildController {
     @RequestMapping(value = "find/{childIdCode}", method = RequestMethod.GET, produces = Constants.JSON)
     public ResponseEntity<Child> findChild(@AuthUser @ApiIgnore Person person,
                                            @PathVariable("childIdCode") long childIdCode) {
-        Child child = childService.findChild(childIdCode);
-        if (child == null || !child.isParent(person)) {
-            throw new IllegalArgumentException("Not found");
-        }
-        return ResponseEntity.ok(child);
+        return ResponseEntity.ok(childService.findChild(childIdCode, person));
     }
 
     @RequestMapping(value = "confirm_father/{childIdCode}", method = RequestMethod.GET, produces = Constants.JSON)
     public ResponseEntity<Child> confirmFather(@AuthUser @ApiIgnore Person father,
                                                @PathVariable("childIdCode") long childIdCode) {
         childService.confirmFather(father, childIdCode);
-        return ResponseEntity.ok(childService.findChild(childIdCode));
+        return ResponseEntity.ok(childService.findChild(childIdCode, father));
+    }
+
+    @RequestMapping(value = "find", method = RequestMethod.GET, produces = Constants.JSON)
+    public ResponseEntity<Collection<Child>> findChildren(@AuthUser @ApiIgnore Person person) {
+        return ResponseEntity.ok(childService.findChildren(person));
     }
 
 }
