@@ -8,6 +8,8 @@ public enum Action {
 
     APPLY_SUPPORT,
 
+    APPLY_SCHOOL_SUPPORT,
+
     APPLY_KINDERGARTEN,
 
     APPLY_SCHOOL

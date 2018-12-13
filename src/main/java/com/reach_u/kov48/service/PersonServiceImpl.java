@@ -2,6 +2,7 @@ package com.reach_u.kov48.service;
 
 import com.google.common.collect.Maps;
 import com.reach_u.kov48.model.Address;
+import com.reach_u.kov48.model.Coordinate;
 import com.reach_u.kov48.model.Person;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
         calendar.set(Calendar.DAY_OF_MONTH, 7);
         calendar.set(Calendar.YEAR, 1992);
 
-        Address address = new Address("Tartu", "Herne", "7");
+        Address address = new Address("Tartu", "Herne", "11", new Coordinate(58.384948, 26.717172));
 
         Person juta = new Person();
         juta.setIdCode(49200000000L);

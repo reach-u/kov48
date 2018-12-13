@@ -15,4 +15,6 @@ public class Address {
 
     private String house;
 
+    private Coordinate crd;
+
 }
