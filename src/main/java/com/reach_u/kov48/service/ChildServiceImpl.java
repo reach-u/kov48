@@ -59,6 +59,7 @@ public class ChildServiceImpl implements ChildService, InitializingBean {
 
         child.setMother(personService.findByIdCode(49200000000L));
         child.setFather(personService.findByIdCode(38900000000L));
+        child.setFatherConfirmed(true);
 
         CHILDREN.put(child.getIdCode(), child);
     }
