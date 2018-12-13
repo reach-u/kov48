@@ -3,6 +3,7 @@ package com.reach_u.kov48.rest.controller;
 import com.reach_u.kov48.model.Person;
 import com.reach_u.kov48.rest.Constants;
 import com.reach_u.kov48.rest.auth.AuthUser;
+import com.reach_u.kov48.rest.response.LoginResponse;
 import com.reach_u.kov48.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,15 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @RequestMapping(value = "login/{idCode}/{phone}", method = RequestMethod.GET)
-    public ResponseEntity<String> login(@PathVariable("idCode") long idCode, @PathVariable("phone") long phone) {
-        return ResponseEntity.ok(loginService.login(idCode, phone));
+    @RequestMapping(value = "login/{idCode}/{phone}", method = RequestMethod.GET, produces = Constants.JSON)
+    public ResponseEntity<LoginResponse> login(@PathVariable("idCode") long idCode, @PathVariable("phone") long phone) {
+        return ResponseEntity.ok(new LoginResponse(loginService.login(idCode, phone)));
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public void logout(@AuthUser @ApiIgnore Person person) {
         loginService.logOut(person);
     }
+
 
 }
