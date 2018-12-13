@@ -8,6 +8,7 @@ import com.reach_u.kov48.service.ChildService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +45,20 @@ public class ChildController {
     @RequestMapping(value = "find", method = RequestMethod.GET, produces = Constants.JSON)
     public ResponseEntity<Collection<Child>> findChildren(@AuthUser @ApiIgnore Person person) {
         return ResponseEntity.ok(childService.findChildren(person));
+    }
+
+    @RequestMapping(value = "set_name/{childIdCode}/{firstName}", method = RequestMethod.GET, produces = Constants.JSON)
+    public ResponseEntity<Child> setName(@AuthUser @ApiIgnore Person person,
+                                         @PathVariable("childIdCode") long childIdCode,
+                                         @PathVariable("firstName") String firstName) {
+        // this should be handled in service
+        Child child = childService.findChild(childIdCode, person);
+        if (!StringUtils.isEmpty(child.getFirstName())) {
+            throw new IllegalStateException("Child already has name");
+        }
+
+        child.setFirstName(firstName);
+        return ResponseEntity.ok(child);
     }
 
 }

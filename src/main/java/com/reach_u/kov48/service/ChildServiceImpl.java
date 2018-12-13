@@ -33,7 +33,7 @@ public class ChildServiceImpl implements ChildService, InitializingBean {
     public Child findChild(long idCode, Person parent) {
         Child child = CHILDREN.get(idCode);
         if (child != null && !child.isParent(parent)) {
-            child = null;
+            throw new IllegalArgumentException("Child not found");
         }
 
         return child;
@@ -50,6 +50,7 @@ public class ChildServiceImpl implements ChildService, InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Child child = new Child();
+        child.setLastName("Tamm");
         child.setBirthPlace("Tartu");
         child.setSex('M');
         child.setDateOfBirth(new Date());
