@@ -1,6 +1,8 @@
 package com.reach_u.kov48.rest.controller;
 
+import com.google.common.collect.Lists;
 import com.reach_u.kov48.model.Child;
+import com.reach_u.kov48.model.Kindergarten;
 import com.reach_u.kov48.model.Person;
 import com.reach_u.kov48.rest.Constants;
 import com.reach_u.kov48.rest.auth.AuthUser;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +61,20 @@ public class ChildController {
         }
 
         child.setFirstName(firstName);
+        return ResponseEntity.ok(child);
+    }
+
+    @RequestMapping(value = "apply_kindergarten/{childIdCode}", method = RequestMethod.POST, produces = Constants.JSON)
+    public ResponseEntity<Child> applyKindergarten(@AuthUser @ApiIgnore Person person,
+                                                   @PathVariable("childIdCode") long childIdCode,
+                                                   @RequestBody Kindergarten[] kindergartens) {
+        // this should be handled in service
+        Child child = childService.findChild(childIdCode, person);
+        if (!StringUtils.isEmpty(child.getFirstName())) {
+            throw new IllegalStateException("Child already has name");
+        }
+
+        child.setKindergartens(Lists.newArrayList(kindergartens));
         return ResponseEntity.ok(child);
     }
 
