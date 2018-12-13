@@ -2,10 +2,12 @@ package com.reach_u.kov48.model;
 
 import com.google.common.collect.Lists;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class Child extends Person {
 
     private Person mother;
