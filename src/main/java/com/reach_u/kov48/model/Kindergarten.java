@@ -13,6 +13,8 @@ public class Kindergarten {
 
     private Coordinate crd;
 
+    private int distance;
+
     private int capacity;
 
     private int waiting;
