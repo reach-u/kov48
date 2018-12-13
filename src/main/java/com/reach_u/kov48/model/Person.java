@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Data
-public class User {
+public class Person {
 
-    private final String idCode;
+    private long idCode;
 
 }

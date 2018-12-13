@@ -1,6 +1,6 @@
 package com.reach_u.kov48.rest.auth;
 
-import com.reach_u.kov48.model.User;
+import com.reach_u.kov48.model.Person;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -13,7 +13,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterAnnotation(AuthUser.class) != null
-                && parameter.getParameterType().isAssignableFrom(User.class);
+                && parameter.getParameterType().isAssignableFrom(Person.class);
     }
 
     @Override
