@@ -40,7 +40,7 @@ public class SupportServiceImpl implements SupportService {
             newSupport.add(s);
         });
 
-        SUPPORT.clear();
+        SUPPORT.removeAll(newSupport);
         SUPPORT.addAll(newSupport);
     }
 }
