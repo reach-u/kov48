@@ -25,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
     public String login(long idCode, long phone) {
         log.info("login: {}", idCode);
         Person person = personService.findByIdCode(idCode);
-        if (person != null) {
+        if (person != null && person.getPhone() == phone) {
             String sessionId = UUID.randomUUID().toString();
             sessionCache.put(sessionId, person);
             return sessionId;
