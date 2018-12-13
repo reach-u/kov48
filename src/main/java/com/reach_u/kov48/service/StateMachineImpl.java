@@ -5,6 +5,7 @@ import com.reach_u.kov48.model.Child;
 import com.reach_u.kov48.model.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -21,7 +22,10 @@ public class StateMachineImpl implements StateMachine {
         RECEIVERS = new StateReceiver[] {
                 // father has not confirmed
                 new StateReceiver((person, child) -> person.getSex() == MALE && !child.isFatherConfirmed(),
-                        new Action[] { Action.CONFIRM_FATHER })
+                        new Action[] { Action.CONFIRM_FATHER }),
+                // child has no name
+                new StateReceiver((person, child) -> StringUtils.isEmpty(child.getFirstName()),
+                        new Action[] { Action.SET_NAME })
         };
     }
 
