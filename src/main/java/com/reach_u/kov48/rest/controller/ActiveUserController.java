@@ -13,7 +13,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @RequestMapping(Constants.API_URL)
 public class ActiveUserController {
 
-    @RequestMapping(value = "active_user", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "active_user", method = RequestMethod.GET, produces = Constants.JSON)
     public ResponseEntity<Person> getActivePerson(@AuthUser @ApiIgnore Person person) {
         return ResponseEntity.ok(person);
     }

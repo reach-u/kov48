@@ -1,12 +1,14 @@
 package com.reach_u.kov48.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 
 @RequiredArgsConstructor
 @Data
+@EqualsAndHashCode(of = "idCode")
 public class Person {
 
     private long idCode;
