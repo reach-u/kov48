@@ -1,6 +1,11 @@
 package com.reach_u.kov48.service;
 
-public class StateMachine {
+import com.reach_u.kov48.model.Action;
+import com.reach_u.kov48.model.Child;
+import com.reach_u.kov48.model.Person;
 
+public interface StateMachine {
+
+    Action[] availableActions(Person person, Child child);
 
 }
