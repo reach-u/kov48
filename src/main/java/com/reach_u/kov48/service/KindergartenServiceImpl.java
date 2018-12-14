@@ -21,7 +21,7 @@ public class KindergartenServiceImpl implements KindergartenService {
                 new Coordinate(58.383551, 26.719322), 582, 350, 78));
         KINDERGARTENS.add(new Kindergarten("Kratt", "Taara pst 46, Tartu",
                 new Coordinate(58.382224, 26.718078), 1165, 50, 2));
-        KINDERGARTENS.add(new Kindergarten("Lasteaed #1", "Vallikraavi7, Tartu",
+        KINDERGARTENS.add(new Kindergarten("Lasteaed #1", "Vallikraavi 7, Tartu",
                 new Coordinate(58.383034, 26.709971), 3777, 110, 0));
     }
 
