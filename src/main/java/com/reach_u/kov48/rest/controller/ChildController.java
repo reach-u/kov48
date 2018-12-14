@@ -9,7 +9,6 @@ import com.reach_u.kov48.rest.auth.AuthUser;
 import com.reach_u.kov48.service.ChildService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +21,6 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(Constants.API_URL + "child")
-@Secured("ROLE_USER")
 public class ChildController {
 
     private final ChildService childService;
