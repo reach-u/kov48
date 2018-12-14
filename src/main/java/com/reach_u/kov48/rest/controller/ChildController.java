@@ -68,10 +68,6 @@ public class ChildController {
                                                    @RequestBody Kindergarten[] kindergartens) {
         // this should be handled in service
         Child child = childService.findChild(childIdCode, person);
-        if (!StringUtils.isEmpty(child.getFirstName())) {
-            throw new IllegalStateException("Child already has name");
-        }
-
         child.setKindergartens(Lists.newArrayList(kindergartens));
         return ResponseEntity.ok(child);
     }
