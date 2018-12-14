@@ -27,8 +27,7 @@ public class StateMachineImpl implements StateMachine {
                 new StateReceiver((person, child) -> StringUtils.isEmpty(child.getFirstName()),
                         new Action[] { Action.SET_NAME }),
                 // name set, but child is not in kindergarten yet
-                new StateReceiver((person, child) -> !StringUtils.isEmpty(child.getFirstName())
-                        && child.getKindergartens().isEmpty(),
+                new StateReceiver((person, child) -> true,
                         new Action[] {
                                 Action.APPLY_SUPPORT,
                                 Action.APPLY_KINDERGARTEN
