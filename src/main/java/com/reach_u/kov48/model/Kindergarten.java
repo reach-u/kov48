@@ -11,6 +11,8 @@ public class Kindergarten {
 
     private String name;
 
+    private String address;
+
     private Coordinate crd;
 
     private int distance;
